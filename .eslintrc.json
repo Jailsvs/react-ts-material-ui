@@ -27,6 +27,7 @@
             "windows"
         ],*/
         "linebreak-style": "off",
+        "react/prop-types": ["off"],
         "quotes": [
             "error",
             "double"

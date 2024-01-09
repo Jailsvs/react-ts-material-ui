@@ -2,10 +2,6 @@ import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon,
 import { useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 
-type Props = {
-  children: React.ReactNode
-};
-
 interface IListItemLinkProps {
 	label: string;
 	icon: string;
@@ -13,7 +9,11 @@ interface IListItemLinkProps {
 	onClick: (() => void) | undefined;
 }
 
-const ListItemLink: React.FC<IListItemLinkProps> = ({ icon, label, to, onClick }: IListItemLinkProps) => {
+interface IMenuLateralProps {
+	children: React.ReactNode;
+}
+
+const ListItemLink: React.FC<IListItemLinkProps> = ({ icon, label, to, onClick }) => {
 	const navigate = useNavigate();
 	const resolvedPath = useResolvedPath(to);
 	const match = useMatch({	path: resolvedPath.pathname,	end: false });
@@ -33,7 +33,7 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({ icon, label, to, onClick }
 	);
 };
 
-const MenuLateral = ({ children }: Props) => {
+const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
 	const theme = useTheme();
 	const smDown = useMediaQuery(theme.breakpoints.down("sm"));
 	const {	isDrawerOpen, toggleDrawerOpen, drawerOptions	} = useDrawerContext();

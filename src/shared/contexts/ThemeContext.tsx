@@ -13,11 +13,11 @@ export const useAppThemeContext = () => {
 	return useContext(ThemeContext);
 };
 
-type Props = {
+type IAppThemeProviderProps = {
   children: React.ReactNode
 };
 
-export const AppThemeProvider = ({ children }: Props) => {
+export const AppThemeProvider: React.FC<IAppThemeProviderProps> = ({ children }) => {
   
 	const [themeName, setThemeName] = useState<"light" | "dark">("light");
 	const toggleTheme = useCallback(() => {
